@@ -5,7 +5,6 @@ import { Text, Textarea, Grid, Button } from "@nextui-org/react";
 import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 import { useState } from "react";
 
-// localhost:3000/createArticle -> they are a user (they can create an article)
 
 const CreateArticle: NextPage = () => {
     const supabaseClient = useSupabaseClient();
@@ -37,17 +36,20 @@ const CreateArticle: NextPage = () => {
                 ])
                 .single()
             if (error) throw error;
+            
+            
             setArticleData(initialState);
             router.push("/mainFeed");
         } catch (error: any) {
             alert(error.message);
         }
     }
-
+   
     return (
         <Grid.Container gap={1}>
             <Text h3>Title</Text>
             <Grid xs={12}>
+             
                 <Textarea
                     name="title"
                     aria-label="title"
